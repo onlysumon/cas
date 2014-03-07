@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using CAS.Models;
 using CAS.DAL;
+using System.Net.Mail;
+using System.Net;
 
 namespace CAS.Controllers
 {
@@ -47,8 +49,9 @@ namespace CAS.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
-                
-                if (user == null) {
+
+                if (user == null)
+                {
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
                 else if (user.IsActive == 1)
@@ -91,8 +94,44 @@ namespace CAS.Controllers
                     //return RedirectToAction("Index", "Home");
 
                     //Send Email to the Applicant
-                    //
+                    try
+                    {
+                        var fromAddress = new MailAddress("yourmail@gmail.com", "Compro Admission");
+                        const string fromPassword = "********";
 
+                        var toAddress = new MailAddress(model.Email, model.LastName);
+                        const string subject = "Registration Confirmation, CAS, MUM";
+                        //Get user id
+                        user = UserManager.FindByName(model.UserName);
+                        string body = string.Format("User Name: {0}{1}Password: {2}{1}{1}Click on the following link to active your account-{1}  {3}://{4}/Account/Active?Applicant={5}", model.UserName, Environment.NewLine, model.Password, Request.Url.Scheme, Request.Url.Authority, user.Id);
+
+                        var smtp = new SmtpClient
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                        };
+                        using (var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            Subject = subject,
+                            Body = body
+                        })
+                        {
+                            smtp.Send(message);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Delete user
+                        //.....
+
+                        //Invalid Email
+                        ViewBag.Message = ex.Message + "<br />Sorry, we are unable to send you mail.<br />Please check your email address.";
+                        return View();
+                    }
                     return View("RegisterThankYou");
                 }
                 else
@@ -103,6 +142,15 @@ namespace CAS.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        // GET: /Account/Active?Applicant
+        [AllowAnonymous]
+        public ActionResult Active(string Applicant)
+        {
+            ViewBag.Message = "Your account is successfully activated.";
+            return View();
         }
 
         //
