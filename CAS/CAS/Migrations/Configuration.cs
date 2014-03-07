@@ -5,15 +5,15 @@ namespace CAS.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CAS.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CAS.DAL.ApplicationDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "CAS.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(CAS.Models.ApplicationDbContext context)
+        protected override void Seed(CAS.DAL.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

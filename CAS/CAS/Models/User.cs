@@ -9,13 +9,6 @@ namespace CAS.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Country { get; set; }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("ComproAppSystem")
-        {
-        }
-    }
+        public int? IsActive { get; set; }
+    }    
 }

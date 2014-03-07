@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using CAS.Models;
+using CAS.DAL;
 
 namespace CAS.Controllers
 {
@@ -46,14 +47,18 @@ namespace CAS.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
-                if (user != null)
+                
+                if (user == null) {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                }
+                else if (user.IsActive == 1)
                 {
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Sorry, your account is not active. Please check you Email.");
                 }
             }
 
@@ -78,12 +83,17 @@ namespace CAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Country = model.Country };
+                var user = new ApplicationUser() { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Country = model.Country, IsActive = null };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    //await SignInAsync(user, isPersistent: false);
+                    //return RedirectToAction("Index", "Home");
+
+                    //Send Email to the Applicant
+                    //
+
+                    return View("RegisterThankYou");
                 }
                 else
                 {
