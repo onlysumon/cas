@@ -5,7 +5,8 @@ namespace CAS.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Email")]
+        [EmailAddress]
         public string UserName { get; set; }
     }
 
@@ -31,7 +32,8 @@ namespace CAS.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Email")]
+        [EmailAddress]
         public string UserName { get; set; }
 
         [Required]
@@ -52,16 +54,13 @@ namespace CAS.Models
         [Required]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
-        
+                
         [Required]
         public string Country { get; set; }
 
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Email")]
+        [EmailAddress]
         public string UserName { get; set; }
 
         [Required]

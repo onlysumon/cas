@@ -8,12 +8,12 @@ using System.Web;
 
 namespace CAS.DAL
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext() : base("ComproAppSystem") { }
 
         //Othere DbSet will be added here to manage table in DB.
-        //public DbSet<Application> Applications { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace CAS.DAL
 
             // Change the name of the table to be Users instead of AspNetUsers
             modelBuilder.Entity<IdentityUser>().ToTable("Users");
-            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+            modelBuilder.Entity<AppUser>().ToTable("Users");
         }
     }
 }

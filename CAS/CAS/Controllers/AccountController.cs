@@ -12,23 +12,28 @@ using CAS.Models;
 using CAS.DAL;
 using System.Net.Mail;
 using System.Net;
+using System.Data.Entity;
 
 namespace CAS.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<AppUser>(new UserStore<AppUser>(new ApplicationDbContext())))
         {
         }
 
-        public AccountController(UserManager<ApplicationUser> userManager)
+        public AccountController(UserManager<AppUser> userManager)
         {
             UserManager = userManager;
+            //Allow Email as UserId
+            UserManager.UserValidator = new UserValidator<AppUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
         }
 
-        public UserManager<ApplicationUser> UserManager { get; private set; }
+        public UserManager<AppUser> UserManager { get; private set; }
 
         //
         // GET: /Account/Login
@@ -57,6 +62,12 @@ namespace CAS.Controllers
                 else if (user.IsActive == 1)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    //Register LastName in Cookie  
+                    HttpCookie hc = new HttpCookie("LastName", db.Users.Find(user.Id).LastName);
+                    hc.Expires = DateTime.Now.AddDays(5);
+                    Response.Cookies.Add(hc);
+                    //var val = Request.Cookies["LastName"].Value;
+
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -86,23 +97,22 @@ namespace CAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Country = model.Country, IsActive = null };
+                var user = new AppUser() { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Country = model.Country, IsActive = null };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     //await SignInAsync(user, isPersistent: false);
                     //return RedirectToAction("Index", "Home");
-
-                    //Send Email to the Applicant
+                    
+                    //Send Email to the Applicant and Then Save to Database
                     try
                     {
-                        var fromAddress = new MailAddress("yourmail@gmail.com", "Compro Admission");
-                        const string fromPassword = "********";
+                        var fromAddress = new MailAddress("your@gmail.com", "Compro Admission");
+                        const string fromPassword = "******";
 
-                        var toAddress = new MailAddress(model.Email, model.LastName);
+                        var toAddress = new MailAddress(model.UserName, model.LastName);
                         const string subject = "Registration Confirmation, CAS, MUM";
-                        //Get user id
-                        user = UserManager.FindByName(model.UserName);
+
                         string body = string.Format("User Name: {0}{1}Password: {2}{1}{1}Click on the following link to active your account-{1}  {3}://{4}/Account/Active?Applicant={5}", model.UserName, Environment.NewLine, model.Password, Request.Url.Scheme, Request.Url.Authority, user.Id);
 
                         var smtp = new SmtpClient
@@ -126,7 +136,8 @@ namespace CAS.Controllers
                     catch (Exception ex)
                     {
                         //Delete user
-                        //.....
+                        db.Users.Remove(db.Users.Find(user.Id));
+                        db.SaveChanges();
 
                         //Invalid Email
                         ViewBag.Message = ex.Message + "<br />Sorry, we are unable to send you mail.<br />Please check your email address.";
@@ -148,7 +159,14 @@ namespace CAS.Controllers
         // GET: /Account/Active?Applicant
         [AllowAnonymous]
         public ActionResult Active(string Applicant)
-        {
+        {            
+            //Set IsActive = 1, if it's null
+            AppUser User = db.Users.Find(Applicant);
+            if (User.IsActive == null)
+                User.IsActive = 1;
+            db.Entry(User).State = EntityState.Modified;
+            db.SaveChanges();
+
             ViewBag.Message = "Your account is successfully activated.";
             return View();
         }
@@ -323,7 +341,7 @@ namespace CAS.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new AppUser() { UserName = model.UserName };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -389,7 +407,7 @@ namespace CAS.Controllers
             }
         }
 
-        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        private async Task SignInAsync(AppUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
