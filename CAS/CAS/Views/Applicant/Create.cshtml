@@ -14,8 +14,16 @@
         <h4>Please enter your personal information</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.Email, new { @Value = "onlysumon@yahoo.com" })
         
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsAppliedBefore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsAppliedBefore, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IsAppliedBefore)
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -49,6 +57,7 @@
                     new SelectListItem {Value = "F", Text = "Female"},
                     new SelectListItem {Value = "O", Text = "Other"}
                 }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Gender)
             </div>
         </div>
 
@@ -61,6 +70,7 @@
                     new SelectListItem {Value = "Married", Text = "Married"},
                     new SelectListItem {Value = "Divorced", Text = "Divorced"}
                 }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MarritalStatus)
             </div>
         </div>
 
@@ -328,6 +338,7 @@
                     new SelectListItem { Value = "ZW", Text = "ZIMBABWE"},
 
                 }, "Select Country", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CountryOfCitizen)
             </div>
         </div>
 
@@ -587,6 +598,7 @@
                     new SelectListItem { Value = "ZW", Text = "ZIMBABWE"},
 
                 }, "Select Country", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CountryOfBirth)
             </div>
         </div>
 

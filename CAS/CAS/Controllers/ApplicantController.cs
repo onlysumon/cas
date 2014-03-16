@@ -48,17 +48,25 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Email,FirstName,MiddleName,LastName,Gender,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
+        public ActionResult Create([Bind(Include = "Email,FirstName,MiddleName,LastName,Gender,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork,IsAppliedBefore")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
                 db.Applicants.Add(applicant);
                 db.SaveChanges();
+
+                ////Create Application Starting informaiton with status
+                //Application application = new Application();
+                //application.Email = User.Identity.Name;
+                //application.StartDate = DateTime.Now;
+                //application.IsSubmitted = false;
+                
+                //db.Applications.Add(application);
+                //db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
-            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 
@@ -70,8 +78,6 @@ namespace CAS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
-            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 
@@ -80,7 +86,7 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
+        public ActionResult Edit([Bind(Include = "Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork,IsAppliedBefore")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
@@ -88,8 +94,6 @@ namespace CAS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
-            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 

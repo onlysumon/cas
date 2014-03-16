@@ -75,6 +75,8 @@ namespace CAS.Models
         [MaxLength(50)]
         public string PhoneWork { get; set; }
 
+        public bool IsAppliedBefore { get; set; }
+
         //Relations
         public Application Application { get; set; }
         public List<Education> Educations { get; set; }

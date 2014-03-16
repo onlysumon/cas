@@ -13,7 +13,7 @@ namespace CAS.Models
         public String Email { get; set; }        
 
         public DateTime StartDate { get; set; }
-        public DateTime Submission { get; set; }
+        public DateTime SubmissionDate { get; set; }
 
         [MaxLength(20)]
         public string EvaluationStatus { get; set; }
