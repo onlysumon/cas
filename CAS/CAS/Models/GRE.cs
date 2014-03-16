@@ -10,7 +10,7 @@ namespace CAS.Models
     public class GRE
     {
         [Key, ForeignKey("EnglishProficiency")]
-        public int Id { get; set; }
+        public string Email { get; set; }
         public double VerbalScore { get; set; }
         public double VerbalPercentile { get; set; }
         public double QuantitativeScore { get; set; }

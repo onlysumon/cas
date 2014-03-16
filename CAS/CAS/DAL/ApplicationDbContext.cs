@@ -30,5 +30,6 @@ namespace CAS.DAL
 
         public System.Data.Entity.DbSet<CAS.Models.EnglishProficiency> EnglishProficiencies { get; set; }
 
+
     }
 }

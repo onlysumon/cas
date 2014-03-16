@@ -19,19 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EnglishProficiency.Id)
+            @Html.DisplayNameFor(model => model.EnglishProficiency.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EnglishProficiency.Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.EnglishProficiency.Email)
         </dd>
 
         <dt>
@@ -133,6 +125,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ApplicantId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Email }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

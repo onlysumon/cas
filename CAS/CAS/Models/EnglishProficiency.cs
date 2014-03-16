@@ -10,7 +10,7 @@ namespace CAS.Models
     public class EnglishProficiency
     {
         [Key, ForeignKey("Applicant")]
-        public int Id { get; set; }
+        public string Email { get; set; }
         public int Reading { get; set; }
         public int Writting { get; set; }
         public int Listening { get; set; }

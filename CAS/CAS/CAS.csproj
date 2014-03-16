@@ -165,10 +165,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201403160105492_InitialCreate.cs" />
-    <Compile Include="Migrations\201403160105492_InitialCreate.Designer.cs">
-      <DependentUpon>201403160105492_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AwardsAndHonors.cs" />
     <Compile Include="Models\Course.cs" />
@@ -186,6 +182,10 @@
     <Compile Include="Models\Applicant.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\CAS.mdf" />
+    <Content Include="App_Data\CAS_log.ldf">
+      <DependentUpon>CAS.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -246,14 +246,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403160105492_InitialCreate.resx">
-      <DependentUpon>201403160105492_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

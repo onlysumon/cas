@@ -23,7 +23,7 @@ namespace CAS.Controllers
         }
 
         // GET: /Applicant/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
@@ -40,8 +40,6 @@ namespace CAS.Controllers
         // GET: /Applicant/Create
         public ActionResult Create()
         {
-            ViewBag.ApplicantId = new SelectList(db.Applications, "Id", "EvaluationStatus");
-            ViewBag.ApplicantId = new SelectList(db.EnglishProficiencies, "Id", "Id");
             return View();
         }
 
@@ -50,7 +48,7 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ApplicantId,Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
+        public ActionResult Create([Bind(Include="Email,FirstName,MiddleName,LastName,Gender,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
@@ -59,25 +57,21 @@ namespace CAS.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ApplicantId = new SelectList(db.Applications, "Id", "EvaluationStatus", applicant.ApplicantId);
-            ViewBag.ApplicantId = new SelectList(db.EnglishProficiencies, "Id", "Id", applicant.ApplicantId);
+            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
+            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 
-        // GET: /Applicant/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: /Applicant/Edit
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Applicant applicant = db.Applicants.Find(id);
+            Applicant applicant = db.Applicants.Find(User.Identity.Name);
             if (applicant == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ApplicantId = new SelectList(db.Applications, "Id", "EvaluationStatus", applicant.ApplicantId);
-            ViewBag.ApplicantId = new SelectList(db.EnglishProficiencies, "Id", "Id", applicant.ApplicantId);
+            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
+            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 
@@ -86,7 +80,7 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ApplicantId,Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
+        public ActionResult Edit([Bind(Include="Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
@@ -94,13 +88,13 @@ namespace CAS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ApplicantId = new SelectList(db.Applications, "Id", "EvaluationStatus", applicant.ApplicantId);
-            ViewBag.ApplicantId = new SelectList(db.EnglishProficiencies, "Id", "Id", applicant.ApplicantId);
+            ViewBag.Email = new SelectList(db.Applications, "Email", "EvaluationStatus", applicant.Email);
+            ViewBag.Email = new SelectList(db.EnglishProficiencies, "Email", "Email", applicant.Email);
             return View(applicant);
         }
 
         // GET: /Applicant/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -117,7 +111,7 @@ namespace CAS.Controllers
         // POST: /Applicant/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Applicant applicant = db.Applicants.Find(id);
             db.Applicants.Remove(applicant);

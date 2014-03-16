@@ -10,7 +10,7 @@ namespace CAS.Models
     public class Application
     {
         [Key, ForeignKey("Applicant")]
-        public int Id { get; set; }        
+        public String Email { get; set; }        
 
         public DateTime StartDate { get; set; }
         public DateTime Submission { get; set; }

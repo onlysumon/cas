@@ -9,8 +9,7 @@ namespace CAS.Models
 {
     public class Applicant
     {
-        public int ApplicantId { get; set; }
-
+        [Key]
         [Required]
         [EmailAddress]
         public string Email { get; set; }
@@ -31,7 +30,8 @@ namespace CAS.Models
 
         [Required]
         [Display(Name = "I am ")]
-        public char Gender { get; set; }
+        [MaxLength(2)]
+        public string Gender { get; set; }
 
         [Required]
         [Display(Name = "Marrital status")]
@@ -46,7 +46,7 @@ namespace CAS.Models
 
         [Required]
         [Display(Name = "Country of citizen")]
-        [MaxLength(10)]
+        [MaxLength(2)]
         public string CountryOfCitizen { get; set; }
 
         [Required]
@@ -56,7 +56,7 @@ namespace CAS.Models
 
         [Required]
         [Display(Name = "Current city (City, Country)")]
-        [MaxLength(2)]
+        [MaxLength(30)]
         public string CurrentCity { get; set; }
 
         [Required]

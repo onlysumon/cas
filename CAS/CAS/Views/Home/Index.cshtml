@@ -4,17 +4,16 @@
 }
 
 <div class="jumbotron">
-    <h1>
-        Welcome,
-        @{
-            @Request.Cookies["LastName"].Value;
-            //var manager = new UserManager<CAS.Models.AppUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<CAS.Models.AppUser>(new CAS.DAL.ApplicationDbContext()));
-            //var currentUser = manager.FindById(User.Identity.GetUserId());
-            //@currentUser.LastName;
-        }
-    </h1>
     <p class="lead">Welcome to the applicaiton management system.</p>
-    <p><a href="#" class="btn btn-primary btn-large">Start New Application &raquo;</a></p>
+    <br /><br />
+    @if (ViewBag.IsNew)
+    {
+        <p>@Html.ActionLink("Start New Application »", "Create", "Applicant", null, new { @class = "btn btn-primary btn-large" })</p>
+    }
+    else
+    {
+        <p>@Html.ActionLink("Update Application »", "Edit", "Applicant", null, new { @class = "btn btn-primary btn-large" })</p>
+    }
 </div>
 <br /> <br /> <br /> <br /> <br /> <br /><br /><br /><br />
 <!--

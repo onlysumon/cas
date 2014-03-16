@@ -10,7 +10,7 @@ namespace CAS.Models
     public class IELTS
     {
         [Key, ForeignKey("EnglishProficiency")]
-        public int Id { get; set; }
+        public string Email { get; set; }
         public double OverallScore { get; set; }
         public double Reading { get; set; }
         public double Writting { get; set; }

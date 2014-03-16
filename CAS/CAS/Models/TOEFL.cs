@@ -10,7 +10,7 @@ namespace CAS.Models
     public class TOEFL
     {
         [Key, ForeignKey("EnglishProficiency")]
-        public int Id { get; set; }
+        public string Email { get; set; }
         public int Year { get; set; }
         public double Score { get; set; }
 
