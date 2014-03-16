@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CAS.Models
+namespace CAS.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
@@ -47,17 +47,6 @@ namespace CAS.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "First name")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "Last name")]
-        public string LastName { get; set; }
-                
-        [Required]
-        public string Country { get; set; }
-
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]

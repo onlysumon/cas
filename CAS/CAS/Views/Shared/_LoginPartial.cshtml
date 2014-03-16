@@ -7,8 +7,8 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + Request.Cookies["LastName"].Value + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) 
-            <!--User.Identity.GetUserName()--> 
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) 
+            <!--Request.Cookies["LastName"].Value--> 
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

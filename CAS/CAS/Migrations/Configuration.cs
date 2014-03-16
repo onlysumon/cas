@@ -10,7 +10,7 @@ namespace CAS.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "CAS.Models.ApplicationDbContext";
+            ContextKey = "CAS.DAL.ApplicationDbContext";
         }
 
         protected override void Seed(CAS.DAL.ApplicationDbContext context)

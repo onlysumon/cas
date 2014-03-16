@@ -1,0 +1,138 @@
+﻿@model CAS.Models.Applicant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Applicant</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Application.EvaluationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Application.EvaluationStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnglishProficiency.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnglishProficiency.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarritalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarritalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryOfCitizen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryOfCitizen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneHome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneHome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneWork)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ApplicantId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

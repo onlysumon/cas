@@ -8,11 +8,12 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using CAS.Models;
+using CAS.ViewModels;
 using CAS.DAL;
 using System.Net.Mail;
 using System.Net;
 using System.Data.Entity;
+using CAS.Models;
 
 namespace CAS.Controllers
 {
@@ -63,9 +64,9 @@ namespace CAS.Controllers
                 {
                     await SignInAsync(user, model.RememberMe);
                     //Register LastName in Cookie  
-                    HttpCookie hc = new HttpCookie("LastName", db.Users.Find(user.Id).LastName);
-                    hc.Expires = DateTime.Now.AddDays(5);
-                    Response.Cookies.Add(hc);
+                    //HttpCookie hc = new HttpCookie("LastName", db.Users.Find(user.Id).LastName);
+                    //hc.Expires = DateTime.Now.AddDays(5);
+                    //Response.Cookies.Add(hc);
                     //var val = Request.Cookies["LastName"].Value;
 
                     return RedirectToLocal(returnUrl);
@@ -97,7 +98,7 @@ namespace CAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new AppUser() { UserName = model.UserName, FirstName = model.FirstName, LastName = model.LastName, Country = model.Country, IsActive = null };
+                var user = new AppUser() { UserName = model.UserName, IsActive = null };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -110,7 +111,7 @@ namespace CAS.Controllers
                         var fromAddress = new MailAddress("your@gmail.com", "Compro Admission");
                         const string fromPassword = "******";
 
-                        var toAddress = new MailAddress(model.UserName, model.LastName);
+                        var toAddress = new MailAddress(model.UserName);
                         const string subject = "Registration Confirmation, CAS, MUM";
 
                         string body = string.Format("User Name: {0}{1}Password: {2}{1}{1}Click on the following link to active your account-{1}  {3}://{4}/Account/Active?Applicant={5}", model.UserName, Environment.NewLine, model.Password, Request.Url.Scheme, Request.Url.Authority, user.Id);
@@ -136,8 +137,8 @@ namespace CAS.Controllers
                     catch (Exception ex)
                     {
                         //Delete user
-                        db.Users.Remove(db.Users.Find(user.Id));
-                        db.SaveChanges();
+                        //db.Users.Remove(db.Users.Find(user.Id));
+                        //db.SaveChanges();
 
                         //Invalid Email
                         ViewBag.Message = ex.Message + "<br />Sorry, we are unable to send you mail.<br />Please check your email address.";

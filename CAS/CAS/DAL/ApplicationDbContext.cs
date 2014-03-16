@@ -20,8 +20,15 @@ namespace CAS.DAL
             base.OnModelCreating(modelBuilder);
 
             // Change the name of the table to be Users instead of AspNetUsers
-            modelBuilder.Entity<IdentityUser>().ToTable("Users");
-            modelBuilder.Entity<AppUser>().ToTable("Users");
+            modelBuilder.Entity<IdentityUser>().ToTable("User");
+            modelBuilder.Entity<AppUser>().ToTable("User");
         }
+
+        public System.Data.Entity.DbSet<CAS.Models.Applicant> Applicants { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.Application> Applications { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.EnglishProficiency> EnglishProficiencies { get; set; }
+
     }
 }
