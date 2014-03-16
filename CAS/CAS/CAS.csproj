@@ -165,9 +165,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201403152356270_InitialCreate.cs" />
-    <Compile Include="Migrations\201403152356270_InitialCreate.Designer.cs">
-      <DependentUpon>201403152356270_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201403160105492_InitialCreate.cs" />
+    <Compile Include="Migrations\201403160105492_InitialCreate.Designer.cs">
+      <DependentUpon>201403160105492_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AwardsAndHonors.cs" />
@@ -240,11 +240,6 @@
     <Content Include="Views\Applicant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201403152356270_InitialCreate.resx">
-      <DependentUpon>201403152356270_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -253,6 +248,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201403160105492_InitialCreate.resx">
+      <DependentUpon>201403160105492_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
