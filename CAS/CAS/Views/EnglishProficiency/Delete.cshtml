@@ -1,0 +1,88 @@
+﻿@model CAS.Models.EnglishProficiency
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EnglishProficiency</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Applicant.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Applicant.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gre.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gre.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ielts.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ielts.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toefl.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toefl.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Writting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Writting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Listening)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Listening)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speaking)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

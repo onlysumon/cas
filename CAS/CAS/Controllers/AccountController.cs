@@ -108,8 +108,8 @@ namespace CAS.Controllers
                     //Send Email to the Applicant and Then Save to Database
                     try
                     {
-                        var fromAddress = new MailAddress("your@gmail.com", "Compro Admission");
-                        const string fromPassword = "******";
+                        var fromAddress = new MailAddress("compro707@gmail.com", "Compro Admission");
+                        const string fromPassword = "hello234@#$";
 
                         var toAddress = new MailAddress(model.UserName);
                         const string subject = "Registration Confirmation, CAS, MUM";
@@ -137,8 +137,8 @@ namespace CAS.Controllers
                     catch (Exception ex)
                     {
                         //Delete user
-                        //db.Users.Remove(db.Users.Find(user.Id));
-                        //db.SaveChanges();
+                        db.Users.Remove(db.Users.Find(user.Id));
+                        db.SaveChanges();
 
                         //Invalid Email
                         ViewBag.Message = ex.Message + "<br />Sorry, we are unable to send you mail.<br />Please check your email address.";

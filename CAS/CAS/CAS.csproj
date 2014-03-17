@@ -160,6 +160,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\AwardsController.cs" />
+    <Compile Include="Controllers\EducationController.cs" />
+    <Compile Include="Controllers\EmploymentController.cs" />
+    <Compile Include="Controllers\EnglishProficiencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,6 +242,26 @@
     <Content Include="Views\Applicant\Details.cshtml" />
     <Content Include="Views\Applicant\Edit.cshtml" />
     <Content Include="Views\Applicant\Index.cshtml" />
+    <Content Include="Views\EnglishProficiency\Create.cshtml" />
+    <Content Include="Views\EnglishProficiency\Delete.cshtml" />
+    <Content Include="Views\EnglishProficiency\Details.cshtml" />
+    <Content Include="Views\EnglishProficiency\Edit.cshtml" />
+    <Content Include="Views\EnglishProficiency\Index.cshtml" />
+    <Content Include="Views\Education\Create.cshtml" />
+    <Content Include="Views\Education\Delete.cshtml" />
+    <Content Include="Views\Education\Details.cshtml" />
+    <Content Include="Views\Education\Edit.cshtml" />
+    <Content Include="Views\Education\Index.cshtml" />
+    <Content Include="Views\Awards\Create.cshtml" />
+    <Content Include="Views\Awards\Delete.cshtml" />
+    <Content Include="Views\Awards\Details.cshtml" />
+    <Content Include="Views\Awards\Edit.cshtml" />
+    <Content Include="Views\Awards\Index.cshtml" />
+    <Content Include="Views\Employment\Create.cshtml" />
+    <Content Include="Views\Employment\Delete.cshtml" />
+    <Content Include="Views\Employment\Details.cshtml" />
+    <Content Include="Views\Employment\Edit.cshtml" />
+    <Content Include="Views\Employment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

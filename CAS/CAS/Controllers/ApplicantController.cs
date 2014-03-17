@@ -22,6 +22,14 @@ namespace CAS.Controllers
             return View(applicants.ToList());
         }
 
+        // GET: /Applicant/PersonalInformation
+        public ActionResult PersonalInformation()
+        {
+            if (db.Applicants.Find(User.Identity.Name) == null)
+                return RedirectToAction("Create");
+            return RedirectToAction("Edit");
+        }
+
         // GET: /Applicant/Details/5
         public ActionResult Details(string id)
         {

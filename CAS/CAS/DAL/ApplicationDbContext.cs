@@ -30,6 +30,18 @@ namespace CAS.DAL
 
         public System.Data.Entity.DbSet<CAS.Models.EnglishProficiency> EnglishProficiencies { get; set; }
 
+        public System.Data.Entity.DbSet<CAS.Models.GRE> GREs { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.IELTS> IELTS { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.TOEFL> TOEFLs { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.Education> Educations { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.AwardsAndHonors> AwardsAndHonors { get; set; }
+
+        public System.Data.Entity.DbSet<CAS.Models.Employment> Employments { get; set; }
+
 
     }
 }

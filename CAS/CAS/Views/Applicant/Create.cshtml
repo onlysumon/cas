@@ -14,8 +14,8 @@
         <h4>Please enter your personal information</h4>
         <hr />
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Email, new { @Value = "onlysumon@yahoo.com" })
-        
+        @Html.HiddenFor(model => model.Email, new { @Value = User.Identity.Name })
+
         <div class="form-group">
             @Html.LabelFor(model => model.IsAppliedBefore, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -650,6 +650,8 @@
     </div>
 }
 
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("« Home", "Index", "Home", null, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("English Proficiency »", "Information", "EnglishProficiency", null, new { @class = "btn btn-primary btn-large" })
 </div>

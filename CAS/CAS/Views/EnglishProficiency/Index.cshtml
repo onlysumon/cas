@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CAS.Models.EnglishProficiency>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Applicant.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gre.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ielts.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toefl.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Writting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Listening)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Speaking)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Applicant.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gre.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ielts.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toefl.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reading)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Writting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Listening)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Speaking)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Email }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Email }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Email })
+        </td>
+    </tr>
+}
+
+</table>

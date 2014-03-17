@@ -1,0 +1,188 @@
+﻿@model CAS.Models.EnglishProficiency
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>English Proficiency</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Email, new { @Value = User.Identity.Name })
+
+    <div class="form-horizontal">
+        <h4>Please enter your English proficiency information</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reading, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Reading)
+                @Html.ValidationMessageFor(model => model.Reading)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Writting, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Writting)
+                @Html.ValidationMessageFor(model => model.Writting)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Listening, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Listening)
+                @Html.ValidationMessageFor(model => model.Listening)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Speaking, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Speaking)
+                @Html.ValidationMessageFor(model => model.Speaking)
+            </div>
+        </div>
+
+        <h4>TOEFL</h4>
+        <hr />
+        @Html.HiddenFor(model => model.Toefl.Email, new { @Value = User.Identity.Name })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Toefl.Year, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Toefl.Year)
+                @Html.ValidationMessageFor(model => model.Toefl.Year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Toefl.Score, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Toefl.Score)
+                @Html.ValidationMessageFor(model => model.Toefl.Score)
+            </div>
+        </div>
+
+        <h4>GRE</h4>
+        <hr />
+        @Html.HiddenFor(model => model.Gre.Email, new { @Value = User.Identity.Name })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.Year, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.Year)
+                @Html.ValidationMessageFor(model => model.Gre.Year)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.VerbalScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.VerbalScore)
+                @Html.ValidationMessageFor(model => model.Gre.VerbalScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.VerbalPercentile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.VerbalPercentile)
+                @Html.ValidationMessageFor(model => model.Gre.VerbalPercentile)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.QuantitativeScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.QuantitativeScore)
+                @Html.ValidationMessageFor(model => model.Gre.QuantitativeScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.QuantitativePercentile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.QuantitativePercentile)
+                @Html.ValidationMessageFor(model => model.Gre.QuantitativePercentile)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.AnalyticalScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.AnalyticalScore)
+                @Html.ValidationMessageFor(model => model.Gre.AnalyticalScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gre.AnalyticalPercentile, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gre.AnalyticalPercentile)
+                @Html.ValidationMessageFor(model => model.Gre.AnalyticalPercentile)
+            </div>
+        </div>
+
+        <h4>IELTS</h4>
+        <hr />
+        @Html.HiddenFor(model => model.Ielts.Email, new { @Value = User.Identity.Name })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ielts.OverallScore, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ielts.OverallScore)
+                @Html.ValidationMessageFor(model => model.Ielts.OverallScore)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ielts.Reading, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ielts.Reading)
+                @Html.ValidationMessageFor(model => model.Ielts.Reading)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ielts.Writting, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ielts.Writting)
+                @Html.ValidationMessageFor(model => model.Ielts.Writting)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ielts.Speaking, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ielts.Speaking)
+                @Html.ValidationMessageFor(model => model.Ielts.Speaking)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ielts.Listening, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ielts.Listening)
+                @Html.ValidationMessageFor(model => model.Ielts.Listening)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+<div>
+    @Html.ActionLink("« Personal Information", "PersonalInformation", "Applicant", null, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Educational Information »", "Index", "Education", null, new { @class = "btn btn-primary btn-large" })
+</div>

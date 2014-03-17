@@ -1,0 +1,146 @@
+﻿@model CAS.Models.Employment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employment</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComnapyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComnapyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FromDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FromDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployementType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployementType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Programming)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programming)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataStructur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataStructur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Networking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Networking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatabaseAdministration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatabaseAdministration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teaching)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teaching)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Management)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Management)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Others)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Others)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OthersPercentage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OthersPercentage)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

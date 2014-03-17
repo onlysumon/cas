@@ -1,0 +1,82 @@
+﻿@model CAS.Models.EnglishProficiency
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EnglishProficiency</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Applicant.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Applicant.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gre.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gre.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ielts.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ielts.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Toefl.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toefl.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Writting)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Writting)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Listening)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Listening)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speaking)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Email }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,164 @@
+﻿@model CAS.Models.Employment
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Employment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComnapyName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ComnapyName)
+                @Html.ValidationMessageFor(model => model.ComnapyName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.WebSite, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.WebSite)
+                @Html.ValidationMessageFor(model => model.WebSite)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Country)
+                @Html.ValidationMessageFor(model => model.Country)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FromDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FromDate)
+                @Html.ValidationMessageFor(model => model.FromDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ToDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ToDate)
+                @Html.ValidationMessageFor(model => model.ToDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Position, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Position)
+                @Html.ValidationMessageFor(model => model.Position)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployementType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployementType)
+                @Html.ValidationMessageFor(model => model.EmployementType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Programming, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Programming)
+                @Html.ValidationMessageFor(model => model.Programming)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataStructur, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataStructur)
+                @Html.ValidationMessageFor(model => model.DataStructur)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Networking, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Networking)
+                @Html.ValidationMessageFor(model => model.Networking)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DatabaseAdministration, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DatabaseAdministration)
+                @Html.ValidationMessageFor(model => model.DatabaseAdministration)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Teaching, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Teaching)
+                @Html.ValidationMessageFor(model => model.Teaching)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Management, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Management)
+                @Html.ValidationMessageFor(model => model.Management)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Others, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Others)
+                @Html.ValidationMessageFor(model => model.Others)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OthersPercentage, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OthersPercentage)
+                @Html.ValidationMessageFor(model => model.OthersPercentage)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+<div>
+    @Html.ActionLink("« Educational Information", "Index", "Education", null, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Awards and Honors »", "Index", "Awards", null, new { @class = "btn btn-primary btn-large" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

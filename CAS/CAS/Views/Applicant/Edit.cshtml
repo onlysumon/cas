@@ -1,17 +1,17 @@
 ﻿@model CAS.Models.Applicant
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Personal Informaiton";
 }
 
-<h2>Edit</h2>
+<h2>Personal Informaiton</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Applicant</h4>
+        <h4>Update Personal Informaiton</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Email)
@@ -120,6 +120,9 @@
     </div>
 }
 
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <!--@Html.ActionLink("Back to List", "Index")-->
+    @Html.ActionLink("« Home", "Index", "Home", null, new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("English Proficiency »", "Information", "EnglishProficiency", null, new { @class = "btn btn-primary btn-large" })
 </div>
