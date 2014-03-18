@@ -48,7 +48,7 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id,InstituteName,DegreeTitle,SubjectArea,City,Country,FromDate,ToDate,GradingScale,FinalGpa")] Education education)
+        public ActionResult Create([Bind(Include = "Id,InstituteName,DegreeTitle,DegreeStatus,SubjectArea,City,Country,FromDate,ToDate,GradingScale,FinalGpa")] Education education)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id,InstituteName,DegreeTitle,SubjectArea,City,Country,FromDate,ToDate,GradingScale,FinalGpa")] Education education)
+        public ActionResult Edit([Bind(Include = "Id,InstituteName,DegreeTitle,DegreeStatus,SubjectArea,City,Country,FromDate,ToDate,GradingScale,FinalGpa")] Education education)
         {
             if (ModelState.IsValid)
             {

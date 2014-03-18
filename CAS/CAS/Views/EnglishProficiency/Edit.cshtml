@@ -1,17 +1,17 @@
 ﻿@model CAS.Models.EnglishProficiency
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "English Proficiency";
 }
 
-<h2>Edit</h2>
+<h2>English Proficiency</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>EnglishProficiency</h4>
+        <h4>Update English Proficiency Information</h4>
         @if (ViewBag.Message != null)
         {
             <p class="alert alert-success">@ViewBag.Message</p>
@@ -23,7 +23,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Reading, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Reading)
+                @Html.DropDownListFor(m => m.Reading, new[]
+                {
+                    new SelectListItem {Value = null, Text = "Select one"},
+                    new SelectListItem {Value = "1", Text = "Barely able to read"},
+                    new SelectListItem {Value = "2", Text = "Barely able to read basic sentences"},
+                    new SelectListItem {Value = "3", Text = "Okay, but with some mistakes"},
+                    new SelectListItem {Value = "5", Text = "Like a native speaker"}
+                }, new { @class = "single-line" })
                 @Html.ValidationMessageFor(model => model.Reading)
             </div>
         </div>
@@ -31,7 +38,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Writting, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Writting)
+                @Html.DropDownListFor(m => m.Writting, new[]
+                {
+                    new SelectListItem {Value = null, Text = "Select one"},
+                    new SelectListItem {Value = "1", Text = "Barely able to write"},
+                    new SelectListItem {Value = "2", Text = "Barely able to write basic sentences"},
+                    new SelectListItem {Value = "3", Text = "Okay, but with some mistakes"},
+                    new SelectListItem {Value = "5", Text = "Like a native speaker"}
+                }, new { @class = "single-line" })
                 @Html.ValidationMessageFor(model => model.Writting)
             </div>
         </div>
@@ -39,7 +53,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Listening, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Listening)
+                @Html.DropDownListFor(m => m.Listening, new[]
+                {
+                    new SelectListItem {Value = null, Text = "Select one"},
+                    new SelectListItem {Value = "1", Text = "Barely able to understand"},
+                    new SelectListItem {Value = "2", Text = "Barely able to understand basic sentences"},
+                    new SelectListItem {Value = "3", Text = "Okay, but with some mistakes"},
+                    new SelectListItem {Value = "5", Text = "Like a native speaker"}
+                }, new { @class = "single-line" })
                 @Html.ValidationMessageFor(model => model.Listening)
             </div>
         </div>
@@ -47,134 +68,147 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Speaking, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Speaking)
+                @Html.DropDownListFor(m => m.Speaking, new[]
+                {
+                    new SelectListItem {Value = null, Text = "Select one"},
+                    new SelectListItem {Value = "1", Text = "Barely able to speak"},
+                    new SelectListItem {Value = "2", Text = "Barely able to speak basic sentences"},
+                    new SelectListItem {Value = "3", Text = "Okay, but with some mistakes"},
+                    new SelectListItem {Value = "5", Text = "Like a native speaker"}
+                }, new { @class = "single-line" })
                 @Html.ValidationMessageFor(model => model.Speaking)
             </div>
         </div>
 
-        <h4>TOEFL</h4>
-        <hr />
-        @Html.HiddenFor(model => model.Toefl.Email, new { @Value = User.Identity.Name })
+        <div id="accordion" style="max-width:800px;">
+            <h4>TOEFL</h4>
+            <div>
+                @Html.HiddenFor(model => model.Toefl.Email, new { @Value = User.Identity.Name })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Toefl.Year, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Toefl.Year)
-                @Html.ValidationMessageFor(model => model.Toefl.Year)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Toefl.Year, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Toefl.Year)
+                        @Html.ValidationMessageFor(model => model.Toefl.Year)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Toefl.Score, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Toefl.Score)
+                        @Html.ValidationMessageFor(model => model.Toefl.Score)
+                    </div>
+                </div>
+            </div>
+
+            <h4>GRE</h4>
+            <div>
+                @Html.HiddenFor(model => model.Gre.Email, new { @Value = User.Identity.Name })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.Year, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.Year)
+                        @Html.ValidationMessageFor(model => model.Gre.Year)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.VerbalScore, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.VerbalScore)
+                        @Html.ValidationMessageFor(model => model.Gre.VerbalScore)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.VerbalPercentile, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.VerbalPercentile)
+                        @Html.ValidationMessageFor(model => model.Gre.VerbalPercentile)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.QuantitativeScore, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.QuantitativeScore)
+                        @Html.ValidationMessageFor(model => model.Gre.QuantitativeScore)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.QuantitativePercentile, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.QuantitativePercentile)
+                        @Html.ValidationMessageFor(model => model.Gre.QuantitativePercentile)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.AnalyticalScore, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.AnalyticalScore)
+                        @Html.ValidationMessageFor(model => model.Gre.AnalyticalScore)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gre.AnalyticalPercentile, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Gre.AnalyticalPercentile)
+                        @Html.ValidationMessageFor(model => model.Gre.AnalyticalPercentile)
+                    </div>
+                </div>
+            </div>
+
+            <h4>IELTS</h4>
+            <div>
+                @Html.HiddenFor(model => model.Ielts.Email, new { @Value = User.Identity.Name })
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ielts.OverallScore, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ielts.OverallScore)
+                        @Html.ValidationMessageFor(model => model.Ielts.OverallScore)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ielts.Reading, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ielts.Reading)
+                        @Html.ValidationMessageFor(model => model.Ielts.Reading)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ielts.Writting, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ielts.Writting)
+                        @Html.ValidationMessageFor(model => model.Ielts.Writting)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ielts.Speaking, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ielts.Speaking)
+                        @Html.ValidationMessageFor(model => model.Ielts.Speaking)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ielts.Listening, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ielts.Listening)
+                        @Html.ValidationMessageFor(model => model.Ielts.Listening)
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Toefl.Score, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Toefl.Score)
-                @Html.ValidationMessageFor(model => model.Toefl.Score)
-            </div>
-        </div>
-
-        <h4>GRE</h4>
-        <hr />
-        @Html.HiddenFor(model => model.Gre.Email, new { @Value = User.Identity.Name })
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.Year, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.Year)
-                @Html.ValidationMessageFor(model => model.Gre.Year)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.VerbalScore, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.VerbalScore)
-                @Html.ValidationMessageFor(model => model.Gre.VerbalScore)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.VerbalPercentile, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.VerbalPercentile)
-                @Html.ValidationMessageFor(model => model.Gre.VerbalPercentile)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.QuantitativeScore, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.QuantitativeScore)
-                @Html.ValidationMessageFor(model => model.Gre.QuantitativeScore)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.QuantitativePercentile, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.QuantitativePercentile)
-                @Html.ValidationMessageFor(model => model.Gre.QuantitativePercentile)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.AnalyticalScore, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.AnalyticalScore)
-                @Html.ValidationMessageFor(model => model.Gre.AnalyticalScore)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gre.AnalyticalPercentile, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gre.AnalyticalPercentile)
-                @Html.ValidationMessageFor(model => model.Gre.AnalyticalPercentile)
-            </div>
-        </div>
-
-        <h4>IELTS</h4>
-        <hr />
-        @Html.HiddenFor(model => model.Ielts.Email, new { @Value = User.Identity.Name })
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ielts.OverallScore, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ielts.OverallScore)
-                @Html.ValidationMessageFor(model => model.Ielts.OverallScore)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ielts.Reading, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ielts.Reading)
-                @Html.ValidationMessageFor(model => model.Ielts.Reading)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ielts.Writting, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ielts.Writting)
-                @Html.ValidationMessageFor(model => model.Ielts.Writting)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ielts.Speaking, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ielts.Speaking)
-                @Html.ValidationMessageFor(model => model.Ielts.Speaking)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ielts.Listening, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ielts.Listening)
-                @Html.ValidationMessageFor(model => model.Ielts.Listening)
-            </div>
-        </div>
+        <br />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -189,3 +223,29 @@
     @Html.ActionLink("« Personal Information", "PersonalInformation", "Applicant", null, new { @class = "btn btn-primary btn-large" })
     @Html.ActionLink("Educational Information »", "Index", "Education", null, new { @class = "btn btn-primary btn-large" })
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var icons = {
+                header: "ui-icon-circle-arrow-e",
+                activeHeader: "ui-icon-circle-arrow-s"
+            };
+            $("#accordion").accordion({
+                icons: icons,
+                heightStyle: "content",
+                collapsible: true
+            });
+            $("#toggle").button().click(function () {
+                if ($("#accordion").accordion("option", "icons")) {
+                    $("#accordion").accordion("option", "icons", null);
+                } else {
+                    $("#accordion").accordion("option", "icons", icons);
+                }
+            });
+        });
+    </script>
+}

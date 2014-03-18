@@ -617,7 +617,26 @@
         <div class="form-group">
             @Html.LabelFor(model => model.VisaStatus, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VisaStatus)
+                @Html.DropDownListFor(m => m.VisaStatus, new[]
+                {
+                    new SelectListItem {Value = null, Text = "Select One"},
+                    new SelectListItem {Value = "XX", Text = "Not in List"},
+                    new SelectListItem {Value = "US", Text = "US Citizen"},
+                    new SelectListItem {Value = "X", Text = "I don't have a US visa"},
+                    new SelectListItem {Value = "F1", Text = "F1"},
+                    new SelectListItem {Value = "F2", Text = "F2"},
+                    new SelectListItem {Value = "J1", Text = "J1"},
+                    new SelectListItem {Value = "J2", Text = "J2"},
+                    new SelectListItem {Value = "H1B", Text = "H1B"},
+                    new SelectListItem {Value = "H4", Text = "H4"},
+                    new SelectListItem {Value = "B1/B2", Text = "B1/B2"},
+                    new SelectListItem {Value = "L1", Text = "L1"},
+                    new SelectListItem {Value = "L2", Text = "L2"},
+                    new SelectListItem {Value = "E1/E2", Text = "E1/E2"},
+                    new SelectListItem {Value = "Asylum", Text = "Asylum"},
+                    new SelectListItem {Value = "GC", Text = "Green Card"},
+                }, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VisaStatus)
                 @Html.ValidationMessageFor(model => model.VisaStatus)
             </div>
         </div>
@@ -665,6 +684,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/themes/base/css")
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#DateOfBirth").datepicker({

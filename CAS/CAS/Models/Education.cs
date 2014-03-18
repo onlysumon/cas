@@ -12,22 +12,22 @@ namespace CAS.Models
 
         [Required]
         [Display(Name = "Institute name")]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string InstituteName { get; set; }
 
         [Required]
         [Display(Name = "Degree title")]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string DegreeTitle { get; set; }
 
         [Required]
         [Display(Name = "Degree status")]
         [MaxLength(10)]
-        public char DegreeStatus { get; set; }
+        public string DegreeStatus { get; set; }
 
         [Required]
         [Display(Name = "Subject area")]
-        [MaxLength(30)]
+        [MaxLength(50)]
         public string SubjectArea { get; set; }
 
         [Required]

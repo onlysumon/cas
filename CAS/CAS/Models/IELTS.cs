@@ -11,7 +11,10 @@ namespace CAS.Models
     {
         [Key, ForeignKey("EnglishProficiency")]
         public string Email { get; set; }
+
+        [Display(Name = "Overall score")]
         public double? OverallScore { get; set; }
+
         public double? Reading { get; set; }
         public double? Writting { get; set; }
         public double? Listening { get; set; }
