@@ -13,7 +13,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 300px;
 }
 
 /* styles for validation helpers */
@@ -55,4 +55,8 @@ input[type="checkbox"].input-validation-error {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     vertical-align: middle;
     width: 100%;
+}
+
+.hasDatepicker, .ui-datepicker-trigger{
+    float:left;
 }

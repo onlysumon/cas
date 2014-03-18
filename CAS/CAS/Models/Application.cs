@@ -19,7 +19,7 @@ namespace CAS.Models
         public string EvaluationStatus { get; set; }
 
         public bool IsSubmitted { get; set; }
-        
-        public Applicant Applicant { get; set; }
+
+        public virtual Applicant Applicant { get; set; }
     }
 }

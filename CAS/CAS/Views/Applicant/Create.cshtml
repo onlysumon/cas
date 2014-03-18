@@ -655,3 +655,19 @@
     @Html.ActionLink("« Home", "Index", "Home", null, new { @class = "btn btn-primary btn-large" })
     @Html.ActionLink("English Proficiency »", "Information", "EnglishProficiency", null, new { @class = "btn btn-primary btn-large" })
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#DateOfBirth").datepicker({
+                maxDate: "-15Y",
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+}

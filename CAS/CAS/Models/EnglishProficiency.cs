@@ -24,9 +24,9 @@ namespace CAS.Models
         [Display(Name = "How well do you speak in English?")]
         public int Speaking { get; set; }
 
-        public IELTS Ielts { get; set; }
-        public GRE Gre { get; set; }
-        public TOEFL Toefl { get; set; }
-        public Applicant Applicant { get; set; }
+        public virtual IELTS Ielts { get; set; }
+        public virtual GRE Gre { get; set; }
+        public virtual TOEFL Toefl { get; set; }
+        public virtual Applicant Applicant { get; set; }
     }
 }

@@ -59,7 +59,7 @@ namespace CAS.Models
 
         public string ApplicantId { get; set; }
 
-        public List<Course> Courses { get; set; }
-        public Applicant Applicant { get; set; }
+        public virtual List<Course> Courses { get; set; }
+        public virtual Applicant Applicant { get; set; }
     }
 }

@@ -62,6 +62,6 @@ namespace CAS.Models
 
         public double OthersPercentage { get; set; }
 
-        public Applicant Applicant { get; set; }
+        public virtual Applicant Applicant { get; set; }
     }
 }

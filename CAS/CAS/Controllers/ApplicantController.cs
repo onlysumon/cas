@@ -72,7 +72,7 @@ namespace CAS.Controllers
                 //db.Applications.Add(application);
                 //db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Information", "EnglishProficiency");
             }
 
             return View(applicant);
@@ -94,13 +94,13 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Email,FirstName,MiddleName,LastName,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork,IsAppliedBefore")] Applicant applicant)
+        public ActionResult Edit([Bind(Include = "Email,FirstName,MiddleName,LastName,Gender,MarritalStatus,DateOfBirth,CountryOfCitizen,CountryOfBirth,CurrentCity,VisaStatus,Skype,PhoneHome,PhoneWork,IsAppliedBefore")] Applicant applicant)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(applicant).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Message = "Update Successful.";
             }
             return View(applicant);
         }

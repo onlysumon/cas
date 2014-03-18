@@ -75,6 +75,7 @@ namespace CAS.Models
         [MaxLength(50)]
         public string PhoneWork { get; set; }
 
+        [Display(Name = "Has applied before")]
         public bool IsAppliedBefore { get; set; }
 
         //Relations

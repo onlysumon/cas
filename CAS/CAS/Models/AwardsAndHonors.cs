@@ -17,6 +17,6 @@ namespace CAS.Models
         [MaxLength(200)]
         public string Description { get; set; }
 
-        public Applicant Applicant { get; set; }
+        public virtual Applicant Applicant { get; set; }
     }
 }

@@ -57,34 +57,26 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Email,Reading,Writting,Listening,Speaking,Ielts,Toefl,Gre")] EnglishProficiency englishproficiency)
+        public ActionResult Create([Bind(Include = "Email,Reading,Writting,Listening,Speaking,Toefl,Gre,Ielts")] EnglishProficiency englishproficiency)
         {
             if (ModelState.IsValid)
             {
                 db.EnglishProficiencies.Add(englishproficiency);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Education", "Index");
             }
 
             return View(englishproficiency);
         }
 
         // GET: /EnglishProficiency/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EnglishProficiency englishproficiency = db.EnglishProficiencies.Find(id);
+            EnglishProficiency englishproficiency = db.EnglishProficiencies.Include(e => e.Toefl).Include(e => e.Gre).Include(e => e.Ielts).SingleOrDefault(e => e.Email == User.Identity.Name);
             if (englishproficiency == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Email = new SelectList(db.Applicants, "Email", "FirstName", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.GREs, "Email", "Email", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.IELTS, "Email", "Email", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.TOEFLs, "Email", "Email", englishproficiency.Email);
             return View(englishproficiency);
         }
 
@@ -93,18 +85,18 @@ namespace CAS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Email,Reading,Writting,Listening,Speaking")] EnglishProficiency englishproficiency)
+        public ActionResult Edit([Bind(Include = "Email,Reading,Writting,Listening,Speaking,Toefl,Gre,Ielts")] EnglishProficiency englishproficiency)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(englishproficiency).State = EntityState.Modified;
+                db.Entry(englishproficiency.Toefl).State = EntityState.Modified;
+                db.Entry(englishproficiency.Gre).State = EntityState.Modified;
+                db.Entry(englishproficiency.Ielts).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.Email = new SelectList(db.Applicants, "Email", "FirstName", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.GREs, "Email", "Email", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.IELTS, "Email", "Email", englishproficiency.Email);
-            ViewBag.Email = new SelectList(db.TOEFLs, "Email", "Email", englishproficiency.Email);
+                
+                ViewBag.Message = "Update Successful.";
+            }            
             return View(englishproficiency);
         }
 

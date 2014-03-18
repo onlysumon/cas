@@ -11,14 +11,14 @@ namespace CAS.Models
     {
         [Key, ForeignKey("EnglishProficiency")]
         public string Email { get; set; }
-        public int Year { get; set; }
-        public double VerbalScore { get; set; }
-        public double VerbalPercentile { get; set; }
-        public double QuantitativeScore { get; set; }
-        public double QuantitativePercentile { get; set; }
-        public double AnalyticalScore { get; set; }
-        public double AnalyticalPercentile { get; set; }
+        public int? Year { get; set; }
+        public double? VerbalScore { get; set; }
+        public double? VerbalPercentile { get; set; }
+        public double? QuantitativeScore { get; set; }
+        public double? QuantitativePercentile { get; set; }
+        public double? AnalyticalScore { get; set; }
+        public double? AnalyticalPercentile { get; set; }
 
-        public EnglishProficiency EnglishProficiency { get; set; }
+        public virtual EnglishProficiency EnglishProficiency { get; set; }
     }
 }

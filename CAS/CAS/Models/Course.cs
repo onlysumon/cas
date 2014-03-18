@@ -23,6 +23,6 @@ namespace CAS.Models
         [MaxLength(50)]
         public string Description { get; set; }
 
-        public Education Education { get; set; }
+        public virtual Education Education { get; set; }
     }
 }

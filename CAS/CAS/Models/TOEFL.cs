@@ -11,9 +11,9 @@ namespace CAS.Models
     {
         [Key, ForeignKey("EnglishProficiency")]
         public string Email { get; set; }
-        public int Year { get; set; }
-        public double Score { get; set; }
+        public int? Year { get; set; }
+        public double? Score { get; set; }
 
-        public EnglishProficiency EnglishProficiency { get; set; }
+        public virtual EnglishProficiency EnglishProficiency { get; set; }
     }
 }
